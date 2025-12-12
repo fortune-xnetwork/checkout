@@ -64,7 +64,6 @@
     display:block;
   }
 
-  /* title size kept small so it fits screens */
   .site-title{
     font-family:"Times New Roman", Times, serif;
     font-weight:800;
@@ -115,7 +114,6 @@
     font-family:"Times New Roman", Times, serif;
   }
 
-  /* Slightly less bold than before but still prominent. RUSH NOW kept uppercase */
   .hero p{
     margin:0;
     margin-top:6px;
@@ -123,7 +121,7 @@
     color:rgba(255,255,255,0.88);
     text-align:center;
     max-width:760px;
-    font-weight:600; /* less bold */
+    font-weight:600;
     text-transform:none;
     line-height:1.15;
   }
@@ -136,9 +134,7 @@
     width:100%;
   }
 
-  /* Package card: vertical layout.
-     Width slightly increased a bit from previous, height also small increase.
-     These are intentionally small changes so cards fit and have space. */
+  /* PACKAGE CARD SECTION */
   .package-box{
     display:flex;
     flex-direction:column;
@@ -149,8 +145,8 @@
     padding:18px;
     border:1px solid var(--gold-faded);
     box-shadow:var(--card-shadow);
-    width:372px;       /* very small increase from previous */
-    min-height:436px;  /* small increase in length so content fits comfortably */
+    width:382px;           /* very small increase */
+    min-height:446px;      /* very small increase */
     box-sizing:border-box;
     transition: transform .26s cubic-bezier(.2,.9,.3,1), box-shadow .26s;
   }
@@ -160,15 +156,13 @@
     box-shadow:0 20px 48px rgba(179,56,0,0.42),0 0 44px rgba(255,215,0,0.10);
   }
 
-  /* Image box wrapper (Option A style: soft gradient background, padding, rounded, soft glow).
-     This is the 'box' you asked to restore. The image inside will auto-fit (contain) so nothing is cropped.
-     The box expands to the image up to the max-height limits; padding keeps the frame look like before. */
+  /* RESTORED OPTION A IMAGE BOX */
   .image-box{
     width:92%;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:12px; /* small padding like before */
+    padding:12px;
     border-radius:12px;
     background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
     box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 8px 22px rgba(255,255,255,0.02) inset;
@@ -176,21 +170,12 @@
     box-sizing:border-box;
   }
 
-  /* thumbnail img inside the box: contain so full image visible; width auto so portrait/landscape both fit */
   .image-box img{
-    width:auto;
-    max-width:100%;
-    height:auto;
-    max-height:260px; /* chosen final thumb limit */
-    object-fit:contain; /* ensures full image visible */
-    display:block;
+    width:100%;
+    height:300px;        /* FINAL height for thumbnails */
+    object-fit:cover;    /* OPTION A */
     border-radius:8px;
-    transition: transform 0.45s cubic-bezier(.2,.9,.3,1);
-  }
-
-  /* zoomed class used for scroll/tap animation */
-  .image-box img.zoomed{
-    transform:scale(1.06);
+    display:block;
   }
 
   .package-content{
@@ -207,9 +192,7 @@
     font-size:16px;
     color:var(--cream);
     font-weight:800;
-    letter-spacing:0.2px;
     white-space:nowrap;
-    width:94%;
     font-family:"Times New Roman", Times, serif;
   }
 
@@ -218,11 +201,9 @@
     font-weight:900;
     font-size:22px;
     margin-top:4px;
-    white-space:nowrap;
     display:flex;
     align-items:center;
     gap:8px;
-    justify-content:center;
   }
 
   .price-bullet{
@@ -230,13 +211,11 @@
     height:8px;
     background:var(--gold);
     border-radius:50%;
-    box-shadow:0 4px 10px rgba(255,170,0,0.12);
   }
 
   .card-notes{
     margin-top:6px;
     font-size:14px;
-    color:rgba(255,255,255,0.90);
     opacity:0.95;
     width:92%;
   }
@@ -244,31 +223,18 @@
   .actions{
     display:flex;
     gap:12px;
-    align-items:center;
     justify-content:center;
     width:100%;
   }
 
   .view-details{
     background:transparent;
-    border:1px solid var(--gold); /* thin gold outline */
+    border:1px solid var(--gold);
     color:#fff;
     padding:10px 16px;
     border-radius:12px;
     font-weight:700;
-    cursor:pointer;
-    transition: background .18s, transform .18s, box-shadow .18s;
-    min-width:110px;
     white-space:nowrap;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  .view-details:hover{
-    background:rgba(255,255,255,0.03);
-    transform:translateY(-3px);
-    box-shadow:0 6px 18px rgba(0,0,0,0.4);
   }
 
   .btn{
@@ -281,32 +247,23 @@
     padding:12px 18px;
     border-radius:12px;
     font-weight:800;
-    text-decoration:none;
-    box-shadow:0 10px 28px rgba(255,115,0,0.18);
     white-space:nowrap;
     cursor:pointer;
     border:0;
     min-width:140px;
-    transition:transform .18s, box-shadow .18s;
-    font-family:"Times New Roman", Times, serif;
     position:relative;
-    z-index:1;
   }
 
-  .btn.pulse{ animation: btnPulse 2.2s ease-in-out infinite; }
+  .btn.pulse{ animation: btnPulse 2.2s infinite; }
   @keyframes btnPulse{ 0%{transform:scale(1);}50%{transform:scale(1.03);}100%{transform:scale(1);} }
 
-  /* loading: keep text + loader white and visible; fade the button box using a ::before overlay */
-  .btn.loading{ color:#fff; pointer-events:none; }
   .btn.loading::before{
     content:"";
     position:absolute;
     inset:0;
-    background: rgba(255,255,255,0.28); /* fades the box but text remains visible because text is on top */
+    background: rgba(255,255,255,0.28);
     border-radius:12px;
-    z-index:0;
   }
-  .btn.loading .loader{ margin-left:10px; }
 
   .loader{
     width:16px;
@@ -315,12 +272,11 @@
     border:2px solid rgba(255,255,255,0.25);
     border-top-color:white;
     animation:spin 0.9s linear infinite;
-    display:inline-block;
-    vertical-align:middle;
   }
-  @keyframes spin{ to{ transform:rotate(360deg); } }
 
-  /* Modal */
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+
+  /* MODAL SECTION */
   .modal-bg{
     position:fixed;
     inset:0;
@@ -337,56 +293,47 @@
     width:100%;
     max-width:900px;
     background:linear-gradient(135deg, rgba(122,0,0,0.98), rgba(179,24,0,0.96));
-    color:#fff;
     border-radius:14px;
     padding:18px;
-    box-shadow:0 20px 60px rgba(0,0,0,0.6);
     position:relative;
   }
 
-  .modal .close{
+  .close{
     position:absolute;
     right:14px;
     top:8px;
     font-size:34px;
-    cursor:pointer;
-    color:rgba(255,255,255,0.95);
     background:rgba(255,255,255,0.02);
     padding:6px 10px;
     border-radius:10px;
+    cursor:pointer;
   }
 
-  /* Modal image box (same soft box style) */
+  /* RESTORED OPTION A MODAL IMAGE BOX */
   .modal-image-box{
     width:100%;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:14px; /* slightly bigger padding for modal */
+    padding:14px;
     border-radius:12px;
     background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
     box-shadow: 0 12px 36px rgba(0,0,0,0.45), 0 8px 26px rgba(255,255,255,0.02) inset;
     border:1px solid rgba(255,255,255,0.03);
-    box-sizing:border-box;
     margin-bottom:12px;
   }
 
   .modal-image-box img{
-    width:auto;
-    max-width:100%;
-    height:auto;
-    max-height:520px; /* larger modal image limit */
-    object-fit:contain;
-    display:block;
+    width:100%;
+    height:620px;        /* FINAL modal image height */
+    object-fit:cover;    /* OPTION A FULL BLEED */
     border-radius:8px;
   }
 
   .modal-title{
-    margin:6px 0 8px 0;
-    color:var(--white-faded);
     font-size:18px;
-    font-weight:700;
     font-family:"Times New Roman", Times, serif;
+    margin-bottom:8px;
   }
 
   .modal-benefits{
@@ -394,7 +341,6 @@
     padding:14px;
     border-radius:10px;
     font-size:16px;
-    color:white;
     margin-bottom:12px;
   }
 
@@ -402,10 +348,6 @@
     display:block;
     margin:6px auto 0 auto;
     padding:14px 28px;
-    font-size:16px;
-    font-family:"Times New Roman", Times, serif;
-    border-radius:12px;
-    text-align:center;
   }
 
   footer{
@@ -413,17 +355,6 @@
     color:rgba(255,255,255,0.35);
     font-size:14px;
     padding:16px 0 6px;
-  }
-
-  /* Responsive */
-  @media (max-width:520px){
-    .site-title{ font-size:20px; white-space:normal; }
-    .package-box{ width:92%; min-height:380px; max-width:420px; }
-    .image-box{ padding:10px; }
-    .image-box img{ max-height:220px; }
-    .modal{ max-width:96%; padding:12px; }
-    .modal-image-box{ padding:10px; }
-    .modal-image-box img{ max-height:260px; }
   }
 </style>
 </head>
@@ -439,66 +370,73 @@
 
   <section class="hero">
     <div class="subtitle-box">
-      <h1>Select your preferred package to continue</h1>
+      <h1>Select your preferred package to complete your registration:</h1>
     </div>
     <p>Pick a package to get started and start earning non-stop everyday; <span style="text-transform:uppercase;font-weight:700">RUSH NOW!</span></p>
   </section>
 
   <section class="grid">
 
-    <!-- STARTER -->
-    <article class="package-box" id="starter-card" data-package="starter">
+    <!-- STARTER PACKAGE -->
+    <article class="package-box">
+
       <div class="image-box">
-        <img src="Starter thumb.jpg" alt="Starter thumbnail">
+        <img src="Starter thumb.jpg">
       </div>
 
       <div class="package-content">
         <h3 class="pkg-title">FORTUNE-X STARTER PACKAGE</h3>
-        <div class="pkg-price"><span class="price-bullet" aria-hidden="true"></span>₦7,500</div>
-        <div class="card-notes">• up to ₦8,000 daily earnings • Minimum withdrawal ₦15,000 • 6-month subscription</div>
+        <div class="pkg-price"><span class="price-bullet"></span>₦7,500</div>
+        <div class="card-notes">• up to ₦8,000 daily earnings<br>
+          • Minimum withdrawal ₦15,000<br>
+          • 6-month subscription</div>
 
         <div class="actions">
           <button class="view-details" onclick="openModal('starter')">VIEW DETAILS</button>
-          <a class="btn pulse" data-href="https://paystack.shop/pay/Starterpackage1" role="button">REGISTER NOW</a>
+          <a class="btn pulse" data-href="https://paystack.shop/pay/Starterpackage1">REGISTER NOW</a>
         </div>
       </div>
+
     </article>
 
-    <!-- PLUS -->
-    <article class="package-box" id="plus-card" data-package="plus">
+    <!-- PLUS PACKAGE -->
+    <article class="package-box">
+
       <div class="image-box">
-        <img src="Plus thumb.jpg" alt="Plus thumbnail">
+        <img src="Plus thumb.jpg">
       </div>
 
       <div class="package-content">
         <h3 class="pkg-title">FORTUNE-X PLUS PACKAGE</h3>
-        <div class="pkg-price"><span class="price-bullet" aria-hidden="true"></span>₦14,500</div>
-        <div class="card-notes">• Up to ₦18,000 daily earnings • No withdrawal limit • 12-month subscription</div>
+        <div class="pkg-price"><span class="price-bullet"></span>₦14,500</div>
+        <div class="card-notes">• Up to ₦18,000 daily earnings<br>
+          • No withdrawal limit<br>
+          • 12-month subscription</div>
 
         <div class="actions">
           <button class="view-details" onclick="openModal('plus')">VIEW DETAILS</button>
-          <a class="btn pulse" data-href="https://paystack.shop/pay/pluspackage1" role="button">REGISTER NOW</a>
+          <a class="btn pulse" data-href="https://paystack.shop/pay/pluspackage1">REGISTER NOW</a>
         </div>
       </div>
+
     </article>
 
   </section>
 
 </main>
 
-<!-- MODALS -->
-
+<!-- STARTER MODAL -->
 <div id="starterModal" class="modal-bg" onclick="bgClose(event,'starter')">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="starterTitle">
+  <div class="modal">
     <div class="close" onclick="closeModal('starter')">×</div>
 
     <div class="modal-image-box">
-      <img src="General 1.jpg" alt="Starter large">
+      <img src="General 1.jpg">
     </div>
 
-    <div id="starterTitle" class="modal-title">FORTUNE-X Starter Package</div>
+    <div class="modal-title">FORTUNE-X Starter Package</div>
 
-    <div class="modal-benefits" aria-label="starter benefits">
+    <div class="modal-benefits">
       💎 ₦6000 instant reward claim<br>
       💎 Casino games reward $50<br>
       💎 Limited K-drama review earnings<br>
@@ -508,21 +446,22 @@
       💎 Subscription valid for 6 months
     </div>
 
-    <a class="btn pulse register" data-href="https://paystack.shop/pay/Starterpackage1" role="button">REGISTER NOW</a>
+    <a class="btn pulse register" data-href="https://paystack.shop/pay/Starterpackage1">REGISTER NOW</a>
   </div>
 </div>
 
+<!-- PLUS MODAL -->
 <div id="plusModal" class="modal-bg" onclick="bgClose(event,'plus')">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="plusTitle">
+  <div class="modal">
     <div class="close" onclick="closeModal('plus')">×</div>
 
     <div class="modal-image-box">
-      <img src="General 2.jpg" alt="Plus large">
+      <img src="General 2.jpg">
     </div>
 
-    <div id="plusTitle" class="modal-title">FORTUNE-X Plus Package</div>
+    <div class="modal-title">FORTUNE-X Plus Package</div>
 
-    <div class="modal-benefits" aria-label="plus benefits">
+    <div class="modal-benefits">
       💎 ₦12,000 instant reward claim<br>
       💎 Online and offline reviewing access<br>
       💎 Casino games reward $100<br>
@@ -533,108 +472,46 @@
       💎 Subscription valid for 12 months
     </div>
 
-    <a class="btn pulse register" data-href="https://paystack.shop/pay/pluspackage1" role="button">REGISTER NOW</a>
+    <a class="btn pulse register" data-href="https://paystack.shop/pay/pluspackage1">REGISTER NOW</a>
   </div>
 </div>
 
 <footer>fortune-xnetwork©2025.</footer>
 
 <script>
-  /* Modal open/close (no other behavior changed) */
   function openModal(key){
-    const el = document.getElementById(key + 'Modal');
-    if(!el) return;
-    el.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-    setTimeout(()=>{
-      const btn = el.querySelector('.register');
-      if(btn) btn.focus();
-    },180);
+    document.getElementById(key+"Modal").style.display="flex";
+    document.body.style.overflow="hidden";
   }
   function closeModal(key){
-    const el = document.getElementById(key + 'Modal');
-    if(!el) return;
-    el.style.display = 'none';
-    document.body.style.overflow = '';
-    const modalInner = el.querySelector('.modal');
-    if(modalInner) modalInner.classList.remove('registering');
+    document.getElementById(key+"Modal").style.display="none";
+    document.body.style.overflow="";
   }
-  function bgClose(e, key){
-    if(e.target.classList.contains('modal-bg')) closeModal(key);
+  function bgClose(e,key){
+    if(e.target.classList.contains("modal-bg")){
+      closeModal(key);
+    }
   }
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){
-      ['starter','plus'].forEach(k => closeModal(k));
-    }
-  });
 
-  /* Image zoom on scroll / tap:
-     - IntersectionObserver adds zoomed class when image >=60% visible
-     - pointerdown triggers a short zoom to simulate tap interaction
-  */
-  (function imageZoomOnView(){
-    const images = document.querySelectorAll('.image-box img');
-    if(!('IntersectionObserver' in window)) {
-      // fallback: simple tap zoom only
-      images.forEach(img=>{
-        img.addEventListener('pointerdown', ()=>{
-          img.classList.add('zoomed');
-          setTimeout(()=> img.classList.remove('zoomed'), 350);
-        });
-      });
-      return;
-    }
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(en=>{
-        const img = en.target;
-        if(en.isIntersecting && en.intersectionRatio >= 0.6){
-          img.classList.add('zoomed');
-        } else {
-          img.classList.remove('zoomed');
-        }
-      });
-    }, { root:null, rootMargin:'0px', threshold: [0.6] });
-
-    images.forEach(img=>{
-      io.observe(img);
-      img.addEventListener('pointerdown', ()=>{
-        img.classList.add('zoomed');
-        setTimeout(()=> img.classList.remove('zoomed'), 350);
-      });
-    });
-  })();
-
-  /* Register buttons: on click show loading, keep text+loader white, only box fades via ::before overlay */
+  /* REGISTER BUTTON LOADING EFFECT */
   function makeRegisterHandlers(){
-    const regs = Array.from(document.querySelectorAll('.btn, .register'));
-    regs.forEach(el=>{
-      if(el._fortuneAttached) return;
-      el._fortuneAttached = true;
-
-      el.addEventListener('click', function(e){
-        const dest = el.getAttribute('data-href') || el.getAttribute('href') || '#';
+    document.querySelectorAll(".btn, .register").forEach(btn=>{
+      if(btn._done) return;
+      btn._done = true;
+      btn.addEventListener("click",e=>{
         e.preventDefault();
-        if(el.classList.contains('loading')) return;
+        if(btn.classList.contains("loading")) return;
 
-        // stop pulse
-        el.classList.remove('pulse');
+        btn.classList.remove("pulse");
+        btn.classList.add("loading");
+        btn.innerHTML = 'PLEASE WAIT <span class="loader"></span>';
 
-        // if inside modal, ensure modal stays and register button centered (no shift)
-        const modalEl = el.closest('.modal');
-        if(modalEl) modalEl.classList.add('registering');
-
-        // set loading UI
-        el.classList.add('loading');
-        el.innerHTML = '<span style="font-weight:800;letter-spacing:0.6px;color:#fff;">PLEASE WAIT</span><span class="loader" aria-hidden="true"></span>';
-
-        setTimeout(()=>{
-          window.location.href = dest;
-        }, 6000);
+        setTimeout(()=> window.location.href = btn.dataset.href, 6000);
       });
     });
   }
-  document.addEventListener('DOMContentLoaded', makeRegisterHandlers);
-  makeRegisterHandlers();
+  document.addEventListener("DOMContentLoaded", makeRegisterHandlers);
 </script>
+
 </body>
-    </html>
+  </html>
