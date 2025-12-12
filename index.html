@@ -298,16 +298,17 @@
 
   /* Modal */
   .modal-bg{
-    position:fixed;
-    inset:0;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    background:rgba(0,0,0,0.45);
-    backdrop-filter:blur(7px);
-    z-index:1200;
-    padding:20px;
-  }
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: flex-start;   /* IMPORTANT — allow modal to grow downward */
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(7px);
+    z-index: 1200;
+    padding: 20px;
+    overflow-y: auto !important;   /* ENABLE SCROLLING HERE */
+      }
   
   .modal{
     width:100%;
